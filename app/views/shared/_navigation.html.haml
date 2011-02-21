@@ -1,7 +1,7 @@
 .nav_links
 
   -# Recent Activity
-  .el= link_to t('.recent_activity'), root_path, :class => 'recent_activity'
+  .el= link_to t('.recent_activity'), root_path, :class => 'recent_activity', :hotkey => 'a'
 
   -# All Projects
   - show_only_recent = current_user.people.size > 3
@@ -32,15 +32,15 @@
             - if project.owner?(current_user)
               .el= link_to t('shared.project_settings_navigation.ownership'), project_ownership_path(project.permalink, :sub_action => 'ownership'), :class => 'ownership ajax'
         .el= link_to t('.people'), project_people_path(project), :class => 'people ajax'
-    - if projects_archived > 0
-      .el= link_to t('.show_all_projects'), all_projects_path, :class => 'more ajax'
+    - if true #if projects_archived > 0
+      .el= link_to t('.show_all_projects'), all_projects_path, :class => 'more ajax', :hotkey => 'p'
     - if !Teambox.config.community || (Teambox.config.community && !@community_organization) || (@community_organization && @community_role)
       .el= link_to t('.new_project'), new_project_path, :class => 'more ajax'
 
   -# My Tasks
   - pending_tasks = current_user.pending_tasks
   .el#my_tasks
-    = link_to t('.my_tasks'), task_lists_path, :class => 'tasks'
+    = link_to t('.my_tasks'), task_lists_path, :class => 'tasks', :hotkey => 't'
     %span.clickable= link_to pending_tasks.length, task_lists_path(:filter_assigned => 'mine'), :class => 'hoverable', :'data-hoverable-class' => 'left', :id => 'open_my_tasks', :title => t('.open_my_tasks')
   .contained
     - for task in pending_tasks
