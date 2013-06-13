@@ -35,3 +35,7 @@ installing Teambox.
 Thanks to the many Ruby projects we're using and the Famfamfam icon collection.
 
 Quick edit by Jay. 
+
+Aleksandra added this for fun. 
+
+
